@@ -1,17 +1,56 @@
-# salarypredictionportfolio
+# Salary Prediction Project
 
-## Project
-### Salary Prediction Project
-Our company wants to determine the "correct" salary for new job postings based on existing job postings. It is projected that this will:
-Take the guesswork out of the existing salary-determining process
-Help standardize salaries for new hires across departments. 
+## DS Methodology 
+As in all my projects, I follow the 4D Data Science Framework, which in brief is:
+#### Define
+What is the KPI we are trying to impact and how does it affect the company
+#### Discover 
+EDA, obtain, clean, explore data, establish baseline outcomes, hypothesize a solution
+#### Develop Solution
+Feature engineering, create and test models, and select the best model
+#### Deploy Solution 
+Automate pipeline, deploy solution, and measure efficacy - how much is it positely affecting the KPI; get feedback and improve model 
 
-In this project, I will analyze the current employees-jobs for many companies against their salaries using the following criteria:  
+### Define
+In this project, our company needs to determine the "correct" salary for new job postings based on existing job postings. 
+In the existing process, each department is left to determine the salary for their postings.  
+It is projected that having this model will:
+Take the guesswork out of the salary-determining process for new job postings
+Help standardize salaries for new job postings across departments. 
+My baseline shows that the 
+
+### Discover
+We are supplied the features and target data from current job postings, and features data from a test data set.  The analysis process reveals the following features:  
 jobType              
 degree              
 major                  
 industry               
 yearsExperience        
 milesFromMetropolis  
+And the target, salary.
 
-Based on this, I will create a model that will supply the "correct" salary that should be offered for each position.  That is, the salary which will put them in line with others of the same criteria, as shown above.  The HR or hiring manager, can simply provide the criteria listed above as a batch file input (in current deployment), and the model will provide them with  
+As part of this process, I use IQR - Interquartile Range rule to identify potential outliers, using the definition of Minimum and Maximum to calculate these values. IQR is a somewhat arbitrary value, but has some value in spotting outliers.  
+
+I use label encoding to create a correlation heatmap.
+From this heatmap, there is shown a greater degree of correlation of jobType to salary, followed by degree, major, and yearsExperience.  Using this analysis enables me to determine if there is collinearity, and so, determine if dimension reduction is needed.  Also, there is some correlation with industy to salary, and a negative correlation betwen milesfromMetropolis to salary. This is because salaries are less in rural and suburban areas than metropolitan areas.
+Overall, this shows that this is a clean dataset that can be modeled as is.
+
+My baseline shows the following MSE from the median salary for each category:
+companyId - 1498.91
+jobType - 963.93
+degree - 1257.61
+major - 1284.07
+industry - 1367.12
+
+## Develop Solution
+Based on EDA, I test 4 different models that I think will improve the results over the baseline model shown above.  Based
+on the EDA, I use:
+Linear Regression - the boxplot and distplot show that there is a good degree of correlation between many of the features and the target (salary).  
+make_pipline - this will use Standard Scalar, and PCA to transform the data before feeding it to the Linear Regression.
+RandomForestRegressor - Because the features are broken into categories, a decision tree method is very likely to give good results.  The Random Forest Regressor prevents overfitting by decision trees by random sampling of data points, and random subset of features considered when splitting nodes.
+GradientBoostingRegressor - This method is an ensemble of weak prediction models, typically decision trees, to make a strong predictor in stages (boosting).  Each subsequent model will fit to the residual of the previous model, thus providing improvement with each stage.
+
+I run a test on these 4 model types using 5-fold cross validation to determine which model provides the lowest MSE, which I use for measure of efficacy.  The best model is used against the test dataset, and the predictions are saved off in a .csv file.
+
+## Deploy Solution
+usingcreate a model that will supply the "correct" salary that should be offered for each position.  That is, the salary which will put them in line with others of the same criteria, as shown above.  The HR or hiring manager, can simply provide the criteria listed above as a batch file input (in current deployment), and the model will provide them with  
