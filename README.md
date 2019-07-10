@@ -9,7 +9,7 @@ EDA, obtain, clean, explore data, establish baseline outcomes, hypothesize a sol
 #### Develop Solution
 Feature engineering, create and test models, and select the best model
 #### Deploy Solution 
-Automate pipeline, deploy solution, and measure efficacy - how much is it positely affecting the KPI; get feedback and improve model 
+Automate pipeline, deploy solution, and measure efficacy - how much is it positively affecting the KPI; get feedback and improve model 
 
 ### Define
 In this project, our company needs to determine the "correct" salary for new job postings based on existing job postings. 
@@ -48,19 +48,19 @@ In this project, I create new features needed to enhance the model, and also shu
 Based on EDA, I test 4 different models that I think will improve the results over the baseline model shown above.  Based
 on the EDA, I use:  
 Linear Regression - the boxplot and distplot show that there is a good degree of correlation between many of the features and the target (salary).   
-make_pipline - this will use Standard Scalar, and PCA to transform the data before feeding it to the Linear Regression.  
-RandomForestRegressor - Because the features are broken into categories, a decision tree method is very likely to give good results.  The Random Forest Regressor prevents overfitting by decision trees by random sampling of data points, and random subset of features considered when splitting nodes.  
+make_pipeline - this will use Standard Scalar, and PCA to transform the data before feeding it to the Linear Regression.  
+RandomForestRegressor - Because the features are broken into categories, a decision tree method is very likely to give good results.  The Random Forest Regressor prevents over-fitting by decision trees by random sampling of data points, and random subset of features considered when splitting nodes.  
 GradientBoostingRegressor - This method is an ensemble of weak prediction models, typically decision trees, to make a strong predictor in stages (boosting).  Each subsequent model will fit to the residual of the previous model, thus providing improvement with each stage.
 
 I run a test on these 4 model types using 5-fold cross validation to determine which model provides the lowest MSE, which I use for measure of efficacy.  
 
 ## Deploy Solution
 The best model from the test runs above is run for Production against the test dataset.  At the conclusion of the run, the following files are saved from the run:
-model.txt - details the model and hyperparameters used for this run
-features_imporantances.csv - the relative importance of the features in determing the predictions
+model.txt - details the model and hyper-parameters used for this run
+features_importances.csv - the relative importance of the features in determining the predictions
 predictions.csv - the predictions for the test input data.    
-In the next updates of this deployment, I will create python scripts from the jupyter notebook, putting the utilities in a seperate python module to be used for multiple projects.  
-As part of this deployment, I create a visualization of the features importance.  This will be valuble to HR and hiring managers because it shows the relative importance of features in setting salary for job postings.  
+In the next updates of this deployment, I will create python scripts from the jupyter notebook, putting the utilities in a separate python module to be used for multiple projects.  
+As part of this deployment, I create a visualization of the features importance.  This will be valuable to HR and hiring managers because it shows the relative importance of features in setting salary for job postings.  
 I also create a presentation showing the graphics created during EDA, and also a feature importance bar graph.
 
 ## Results
