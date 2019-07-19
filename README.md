@@ -21,7 +21,7 @@ Help standardize salaries for new job postings across departments.
 
 
 ### Discover
-[Link to the DISCOVER section](salaryPredictionNotebook.ipynb#DISCOVER)
+[Link to the DISCOVER section](https://nbviewer.jupyter.org/github/jdfreeman-repo/salarypredictionportfolio/blob/master/salaryPredictionNotebook.ipynb#DISCOVER)
 We are supplied the features and target data from current job postings, and features data from a test data set.  The analysis process reveals the following features:  
 jobType              
 degree              
@@ -45,7 +45,7 @@ major - 1284.07
 industry - 1367.12
 
 ## Develop Solution
-[Link to the DEVELOP section](salaryPredictionNotebook.ipynb#DEVELOP)
+[Link to the DEVELOP section](https://nbviewer.jupyter.org/github/jdfreeman-repo/salarypredictionportfolio/blob/master/salaryPredictionNotebook.ipynb#DEVELOP)
 In this project, I create new features needed to enhance the model, and also shuffle the train dataset and reindex it. This improves the cross-validation accuracy. Iuse one-hot-encoding to encode the category features. Since in the EDA, I determined that the companyId does not correlate well to the salary, i.e. there is very small difference between salaries based on company, I removed companyId from the categories.  
 
 Based on EDA, I test 4 different models that I think will improve the results over the baseline model shown above.  Based
@@ -58,7 +58,7 @@ GradientBoostingRegressor - This method is an ensemble of weak prediction models
 I run a test on these 4 model types using 5-fold cross validation to determine which model provides the lowest MSE, which I use for measure of efficacy.  
 
 ## Deploy Solution
-[Link to the DEPLOY section](salaryPredictionNotebook.ipynb#DEPLOY)
+[Link to the DEPLOY section](https://nbviewer.jupyter.org/github/jdfreeman-repo/salarypredictionportfolio/blob/master/salaryPredictionNotebook.ipynb#DEPLOY)
 The best model from the test runs above is run for Production against the test dataset.  At the conclusion of the run, the following files are saved from the run:
 model.txt - details the model and hyper-parameters used for this run
 features_importances.csv - the relative importance of the features in determining the predictions
