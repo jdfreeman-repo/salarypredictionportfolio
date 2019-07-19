@@ -12,7 +12,7 @@ Feature engineering, create and test models, and select the best model
 Automate pipeline, deploy solution, and measure efficacy - how much is it positively affecting the KPI; get feedback and improve model 
 
 ### Define
-[Link to the DEFINE section](https://github.com/jdfreeman-repo/salarypredictionportfolio/blob/master/salaryPredictionNotebook.ipynb#DEFINE)
+[Link to the DEFINE section](https://nbviewer.jupyter.org/github/jdfreeman-repo/salarypredictionportfolio/blob/master/salaryPredictionNotebook.ipynb#DEFINE)
 In this project, our company needs to determine the "correct" salary for new job postings based on existing job postings. 
 In the existing process, each department is left to determine the salary for their postings.  
 It is projected that having this model will:
